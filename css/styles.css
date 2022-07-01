@@ -1,0 +1,12 @@
+.button-add-book>img{
+    width: 100px;
+    height: 100px;
+}
+.button-add-book{
+    width:fit-content;
+    position:sticky;
+    left: calc(95% - 100px);
+    top: calc(90% - 100px);
+    border-radius: 10px;
+    border: 1px solid black;
+}
