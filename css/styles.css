@@ -2,11 +2,45 @@
     width: 100px;
     height: 100px;
 }
+body{
+    background-color: grey;
+}
 .button-add-book{
     width:fit-content;
-    position:sticky;
+    position:absolute;
     left: calc(95% - 100px);
     top: calc(90% - 100px);
     border-radius: 10px;
     border: 1px solid black;
+}
+.list-books-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap:wrap; 
+    gap: 20px;
+}
+.book{
+    background-color: white;
+    border-radius: 10px;
+    width: 10rem;
+    padding: 8px;
+}
+.book-title{
+    text-align: center;
+}
+.book-description{
+
+}
+.book-read-status{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+.book-read-status::after{
+    content: "";
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    border-radius: 100%;
+    display: inline-block;
 }
