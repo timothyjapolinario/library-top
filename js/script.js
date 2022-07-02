@@ -6,15 +6,17 @@ let isFormOpen = false;
 let newBookForm = document.querySelector(".form-add-book-popup");
 console.log(newBookForm);
 
-function triggerForm(){
+function toggleForm(){
     if(isFormOpen){
         //close it
         newBookForm.style.display = "none";
         isFormOpen = false;
+        newBookForm.querySelector("form").reset()
     }else{
         //open it
         newBookForm.style.display = "block";
         isFormOpen = true;
+        
     }
 }
 
@@ -25,7 +27,7 @@ function Book(bookName, bookDescription, hasRead) {
 }
 
 function createBook(){
-    triggerForm();
+    toggleForm();
 }
 
 
