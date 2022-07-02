@@ -9,6 +9,21 @@
 </head>
 <body>
     <div class="container">
+        <div class="form-add-book-popup">
+            <form action="#">
+                <label for="new-book-name">Name</label>
+                <input type="text" name="new-book-name" id="new-book-name">
+
+                <label for="new-book-description">Description</label>
+                <textarea name="new-book-description" id="new-book-description" maxlength="216"></textarea>
+
+                <label for="new-book-read-status">Have read it yet?</label>
+                <input type="radio" name="new-book-read-status" id="new-book-read-status">
+
+                <label for="submit-new-book-button">Submit</label>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
         <div class="list-books-container">
         </div>
     </div>

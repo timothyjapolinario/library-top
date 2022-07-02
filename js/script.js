@@ -2,6 +2,21 @@ let myLibrary = [];
 let bookContainer = document.querySelector(".list-books-container")
 let addBookButton = document.querySelector(".button-add-book");
 let bookDescriptionDummy = "Book Description Lorem ipsum,animi maxime obcaecati perferendis impedit laboriosa    m repudiandae quas ipsum quia officiis, repellat quidem! A"
+let isFormOpen = false;
+let newBookForm = document.querySelector(".form-add-book-popup");
+console.log(newBookForm);
+
+function triggerForm(){
+    if(isFormOpen){
+        //close it
+        newBookForm.style.display = "none";
+        isFormOpen = false;
+    }else{
+        //open it
+        newBookForm.style.display = "block";
+        isFormOpen = true;
+    }
+}
 
 function Book(bookName, bookDescription, hasRead) {
     this.bookName = bookName;
@@ -10,15 +25,16 @@ function Book(bookName, bookDescription, hasRead) {
 }
 
 function createBook(){
-let newBook = new Book("Book1", bookDescriptionDummy , false);
-    addBookToLibrary(newBook)
+    triggerForm();
 }
+
 
 function addBookToLibrary(book) {
     if(myLibrary.push(book)){
         addBookElementUI(book)
     }
 }
+
 
 function addBookElementUI(book){
     console.log("lol")
