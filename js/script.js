@@ -1,17 +1,16 @@
 let myLibrary = [];
 let bookContainer = document.querySelector(".list-books-container")
 let addBookButton = document.querySelector(".button-add-book");
-let bookDescriptionDummy = "Book Description Lorem ipsum,animi maxime obcaecati perferendis impedit laboriosa    m repudiandae quas ipsum quia officiis, repellat quidem! A"
 let isFormOpen = false;
-let newBookForm = document.querySelector(".form-add-book-popup");
-console.log(newBookForm);
+let newBookForm = document.querySelector(".form-add-book-popup > form");
+let submitNewBookButton = document.querySelector("#submit-new-book-button");
 
 function toggleForm(){
     if(isFormOpen){
         //close it
         newBookForm.style.display = "none";
         isFormOpen = false;
-        newBookForm.querySelector("form").reset()
+        newBookForm.reset()
     }else{
         //open it
         newBookForm.style.display = "block";
@@ -20,28 +19,39 @@ function toggleForm(){
     }
 }
 
+
+
 function Book(bookName, bookDescription, hasRead) {
     this.bookName = bookName;
     this.bookDescription = bookDescription;
     this.hasRead = hasRead;
 }
 
-function createBook(){
-    toggleForm();
+let bookName = document.querySelector("#new-book-name");
+let bookDescription = document.querySelector("#new-book-description");
+let bookReadStatus = document.querySelector("#new-book-read-status");
+
+function createBook(e){
+    //prevents page to reload when submitting the form for new book
+    e.preventDefault()
+    let newBook = new Book(bookName.value, bookDescription.value, bookReadStatus.checked)
+    toggleForm()
+    addBookToLibrary(newBook);
 }
+
+
 
 
 function addBookToLibrary(book) {
     if(myLibrary.push(book)){
-        addBookElementUI(book)
+        addBookElement(book)
     }
 }
 
 
-function addBookElementUI(book){
-    console.log("lol")
-    let newBook = document.createElement("div")
-    newBook.classList.add("book")
+function addBookElement(book){
+    let newBookElement = document.createElement("div")
+    newBookElement.classList.add("book")
 
     let newBookName = document.createElement("div");
     newBookName.classList.add("book-title");
@@ -53,12 +63,18 @@ function addBookElementUI(book){
 
     let newBookReadStatus = document.createElement("div")
     newBookReadStatus.classList.add("book-read-status")
+    if(book.hasRead){
+        newBookReadStatus.classList.add("read")
+    }else{
+        newBookReadStatus.classList.add("unread")
+    }
     newBookReadStatus.innerText = "Read Status: "
 
-    newBook.appendChild(newBookName);
-    newBook.appendChild(newBookDescription);
-    newBook.appendChild(newBookReadStatus);
-    bookContainer.appendChild(newBook);
+    newBookElement.appendChild(newBookName);
+    newBookElement.appendChild(newBookDescription);
+    newBookElement.appendChild(newBookReadStatus);
+    bookContainer.appendChild(newBookElement);
 }
 
-addBookButton.addEventListener('click', createBook);
+newBookForm.onsubmit = createBook;
+addBookButton.addEventListener('click', toggleForm);

@@ -35,15 +35,22 @@ body{
     gap: 10px;
     align-items: center;
 }
-.book-read-status::after{
+.unread::after,
+.read::after{
     content: "";
     width: 20px;
     height: 20px;
-    background-color: red;
     border-radius: 100%;
     display: inline-block;
 }
-.form-add-book-popup{
+.unread::after{
+    background-color: red;
+}
+.read::after{
+    background-color: green;
+}
+
+.form-add-book-popup > form{
     max-width: 300px;
     height: 300px;
     background-color: white;
