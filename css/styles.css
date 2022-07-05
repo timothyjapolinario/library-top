@@ -69,7 +69,7 @@ body{
 .remove-button{
     background-color: rgb(245, 70, 70); 
 }
-.unread{
+.book-read-status{
     background-color: rgb(250, 92, 44);
 }
 .read{

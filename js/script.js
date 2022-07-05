@@ -76,6 +76,9 @@ function addBookToLibrary(book) {
     }
 }
 
+function changeReadStatus(){
+
+}
 
 function addBookElement(book){
     let newBookElement = document.createElement("div")
@@ -99,7 +102,6 @@ function addBookElement(book){
         newBookReadStatus.classList.add("read")
         newBookReadStatus.innerText = "Read"
     }else{
-        newBookReadStatus.classList.add("unread")
         newBookReadStatus.innerText = "Not Read"
     }
     
@@ -107,6 +109,18 @@ function addBookElement(book){
     removeButton.classList.add("remove-button")
     removeButton.innerText = "Remove"
 
+    newBookReadStatus.addEventListener('click', function(){
+        let currentBook = myLibrary.get(parseInt(bookId.innerText));
+        if(currentBook.hasRead){
+            currentBook.hasRead = false;
+            newBookReadStatus.innerText = "Not Read"
+        }else{
+            newBookReadStatus.innerText = "Read"
+            currentBook.hasRead = true;
+        }
+        newBookReadStatus.classList.toggle("read");
+        console.log(currentBook);
+    })
 
     removeButton.addEventListener('click', function(){
         console.log("DELETED!")
