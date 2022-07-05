@@ -21,20 +21,20 @@ function toggleForm(){
 
 
 
-function Book(bookName, bookDescription, hasRead) {
+function Book(bookName, bookAuthor, hasRead) {
     this.bookName = bookName;
-    this.bookDescription = bookDescription;
+    this.bookAuthor = bookAuthor;
     this.hasRead = hasRead;
 }
 
 let bookName = document.querySelector("#new-book-name");
-let bookDescription = document.querySelector("#new-book-description");
+let bookAuthor = document.querySelector("#new-book-author");
 let bookReadStatus = document.querySelector("#new-book-read-status");
 
 function createBook(e){
     //prevents page to reload when submitting the form for new book
     e.preventDefault()
-    let newBook = new Book(bookName.value, bookDescription.value, bookReadStatus.checked)
+    let newBook = new Book(bookName.value, bookAuthor.value, bookReadStatus.checked)
     toggleForm()
     addBookToLibrary(newBook);
 }
@@ -57,21 +57,23 @@ function addBookElement(book){
     newBookName.classList.add("book-title");
     newBookName.innerText = book.bookName;
 
-    let newBookDescription = document.createElement("div");
-    newBookDescription.classList.add("book-description");
-    newBookDescription.innerText = book.bookDescription;
+    let newBookAuthor = document.createElement("div");
+    newBookAuthor.classList.add("book-author");
+    newBookAuthor.innerText = book.bookAuthor;
 
     let newBookReadStatus = document.createElement("div")
     newBookReadStatus.classList.add("book-read-status")
     if(book.hasRead){
         newBookReadStatus.classList.add("read")
+        newBookReadStatus.innerText = "Read"
     }else{
         newBookReadStatus.classList.add("unread")
+        newBookReadStatus.innerText = "Not Read"
     }
-    newBookReadStatus.innerText = "Read Status: "
+
 
     newBookElement.appendChild(newBookName);
-    newBookElement.appendChild(newBookDescription);
+    newBookElement.appendChild(newBookAuthor);
     newBookElement.appendChild(newBookReadStatus);
     bookContainer.appendChild(newBookElement);
 }

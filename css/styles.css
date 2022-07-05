@@ -45,30 +45,25 @@ body{
     width: 100%;
     word-wrap: break-word;
 }
-.book-description{
+.book-author{
     width: 100%;
     min-height: 150px;
     word-wrap:break-word;
 }
 .book-read-status{
-    position: fi;
     display: flex;
     gap: 10px;
     align-items: center;
+    width: 100%;
+    height: 2rem;
+    font-size: 1.3rem;
+    border-radius: 5px;
 }
-.unread::after,
-.read::after{
-    content: "";
-    width: 20px;
-    height: 20px;
-    border-radius: 100%;
-    display: inline-block;
+.unread{
+    background-color: rgb(248, 168, 115);
 }
-.unread::after{
-    background-color: red;
-}
-.read::after{
-    background-color: green;
+.read{
+    background-color: rgb(87, 252, 87);
 }
 
 .form-add-book-popup > form{
@@ -83,10 +78,6 @@ body{
     display: none;
 }
 
-#new-book-description{
-    height: 100px;
-    resize: none;
-}
 .form-add-book-popup > form > * {
     width: 100%;
 }
