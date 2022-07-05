@@ -38,6 +38,9 @@ body{
     padding: 12px;
     gap:15px;
 }
+.book-index{
+    display:none;
+}
 .book-title{
     font-size: 1.5rem;
     font-weight: 800;
@@ -47,11 +50,15 @@ body{
 }
 .book-author{
     width: 100%;
-    min-height: 150px;
+    min-height: 60px;
     word-wrap:break-word;
 }
-.book-read-status{
+.book-read-status,
+.remove-button{
+    color: rgb(255, 255, 255);
     display: flex;
+    justify-content: center;
+    font-weight: 700;
     gap: 10px;
     align-items: center;
     width: 100%;
@@ -59,11 +66,14 @@ body{
     font-size: 1.3rem;
     border-radius: 5px;
 }
+.remove-button{
+    background-color: rgb(245, 70, 70); 
+}
 .unread{
-    background-color: rgb(248, 168, 115);
+    background-color: rgb(250, 92, 44);
 }
 .read{
-    background-color: rgb(87, 252, 87);
+    background-color: rgb(54, 196, 54);
 }
 
 .form-add-book-popup > form{
