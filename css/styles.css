@@ -3,17 +3,28 @@
     height: 100px;
 }
 body{
-    background-color: grey;
+    background-color: rgb(201, 201, 201);
+    margin: 0;
+    padding: 0;
+}
+
+.header{
+    font-size: 2rem;
+    padding: 20px;
+    height: 4rem;
+    width: calc(100%-20px);
+    box-shadow: 0 15px 10px #888888;
+    background-color: white;
 }
 .button-add-book{
     width:fit-content;
-    position:sticky;
+    position:fixed;
     left: calc(95% - 100px);
     top: calc(90vh - 100px);
     border-radius: 10px;
-    border: 1px solid black;
 }
 .list-books-container{
+    margin: 20px;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px;
@@ -24,17 +35,23 @@ body{
     background-color: white;
     border-radius: 10px;
     min-height: 150px;
-    padding: 8px;
+    padding: 12px;
+    gap:15px;
 }
 .book-title{
+    font-size: 1.5rem;
+    font-weight: 800;
+    min-height: 60px;
     width: 100%;
     word-wrap: break-word;
 }
 .book-description{
     width: 100%;
+    min-height: 150px;
     word-wrap:break-word;
 }
 .book-read-status{
+    position: fi;
     display: flex;
     gap: 10px;
     align-items: center;
