@@ -19,16 +19,20 @@ body{
     gap: 20px;
 }
 .book{
+    display: flex;
+    flex-direction: column;
     background-color: white;
     border-radius: 10px;
-    width: 10rem;
+    min-height: 150px;
     padding: 8px;
 }
 .book-title{
-    text-align: center;
+    width: 100%;
+    word-wrap: break-word;
 }
 .book-description{
-
+    width: 100%;
+    word-wrap:break-word;
 }
 .book-read-status{
     display: flex;
