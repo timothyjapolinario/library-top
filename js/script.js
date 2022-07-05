@@ -71,7 +71,7 @@ function createBook(e){
 
 
 function addBookToLibrary(book) {
-    if(myLibrary.push(book)){
+    if(myLibrary[book.id] = book){
         addBookElement(book)
     }
 }
