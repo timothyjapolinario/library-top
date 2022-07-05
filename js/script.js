@@ -81,7 +81,9 @@ function addBookElement(book){
     let newBookElement = document.createElement("div")
     newBookElement.classList.add("book")
 
-
+    let bookId = document.createElement("div")
+    bookId.classList.add("book-inex");
+    bookId.innerText = book.bookId;
 
     let newBookName = document.createElement("div");
     newBookName.classList.add("book-title");
@@ -109,6 +111,7 @@ function addBookElement(book){
     removeButton.addEventListener('click', function(){
         console.log("DELETED!")
         newBookElement.remove();
+        myLibrary.delete(parseInt(bookId.innerText));
     })
     newBookElement.appendChild(newBookName);
     newBookElement.appendChild(newBookAuthor);
