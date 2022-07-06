@@ -49,10 +49,14 @@ body{
     word-wrap: break-word;
 }
 .book-author{
+    font-weight: 800;
+    font-size: 1.2rem ;
     width: 100%;
     min-height: 60px;
     word-wrap:break-word;
+    font-style: italic;
 }
+
 .book-read-status,
 .remove-button{
     color: rgb(255, 255, 255);

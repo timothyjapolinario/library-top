@@ -76,10 +76,6 @@ function addBookToLibrary(book) {
     }
 }
 
-function changeReadStatus(){
-
-}
-
 function addBookElement(book){
     let newBookElement = document.createElement("div")
     newBookElement.classList.add("book")
@@ -94,7 +90,7 @@ function addBookElement(book){
 
     let newBookAuthor = document.createElement("div");
     newBookAuthor.classList.add("book-author");
-    newBookAuthor.innerText = book.bookAuthor;
+    newBookAuthor.innerText =  book.bookAuthor;
 
     let newBookReadStatus = document.createElement("div")
     newBookReadStatus.classList.add("book-read-status")
@@ -113,7 +109,8 @@ function addBookElement(book){
         let currentBook = myLibrary.get(parseInt(bookId.innerText));
         if(currentBook.hasRead){
             currentBook.hasRead = false;
-            newBookReadStatus.innerText = "Not Read"
+            newBookReadStatus.innerText = "Not Read";
+            
         }else{
             newBookReadStatus.innerText = "Read"
             currentBook.hasRead = true;
