@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library</title>
+    <link rel="stylesheet" href="./styles.css">
+    <script src="main.js" defer></script>
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/9.15.0/firebase-app-compat.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/9.15.0/firebase-auth-compat.js"></script>
+    <script defer src="/__/firebase/9.15.0/firebase-database-compat.js"></script>
+    <script defer src="/__/firebase/9.15.0/firebase-firestore-compat.js"></script>
+    <script defer src="/__/firebase/9.15.0/firebase-functions-compat.js"></script>
+    <script defer src="/__/firebase/9.15.0/firebase-messaging-compat.js"></script>
+    <script defer src="/__/firebase/9.15.0/firebase-storage-compat.js"></script>
+    <script defer src="/__/firebase/9.15.0/firebase-analytics-compat.js"></script>
+    <script defer src="/__/firebase/9.15.0/firebase-remote-config-compat.js"></script>
+    <script defer src="/__/firebase/9.15.0/firebase-performance-compat.js"></script>
+    <!-- 
+      initialize the SDK after all desired features are loaded, set useEmulator to false
+      to avoid connecting the SDK to running emulators.
+    -->
+    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+    
+</head>
+<body>
+    <div class="container">
+        <div class="form-add-book-popup">
+            <form>
+                <label for="new-book-name">Name</label>
+                <input type="text" name="new-book-name" id="new-book-name" required>
+
+                <label for="new-book-author">Author</label>
+                <input name="new-book-author" id="new-book-author" required></textarea>
+
+                <label for="new-book-read-status">Have read it yet?</label>
+                <input type="checkbox" name="new-book-read-status" id="new-book-read-status">
+
+                <label for="submit-new-book-button">Submit</label>
+                <button type="submit" id="submit-new-book-button" name="submit-new-book-button">Submit</button>
+            </form>
+        </div>
+        <div class="header">Library
+            <div id="sign-in-button">
+                Sign In!
+            </div>
+            <div id="upload-book">
+                Upload Book!
+            </div>
+        </div>
+        <div class="list-books-container">
+        </div>
+    </div>
+    <div class="button-add-book">
+        <img src="./images/book-plus.svg" alt="">
+    </div>
+</body>
+</html>
