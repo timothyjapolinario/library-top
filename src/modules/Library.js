@@ -10,8 +10,6 @@ let submitNewBookButton = document.querySelector("#submit-new-book-button");
 let bookName = document.querySelector("#new-book-name");
 let bookAuthor = document.querySelector("#new-book-author");
 let bookReadStatus = document.querySelector("#new-book-read-status");
-addDummyBooks();
-loadBookUI();
 function toggleForm() {
   if (isFormOpen) {
     //close it
@@ -73,6 +71,15 @@ function addBookToLibrary(book) {
   }
 }
 
+function getAllBooks() {
+  const books = [];
+  for (let [key, value] of myLibrary) {
+    books.push(value);
+  }
+
+  return books;
+}
+
 function addBookElement(book) {
   let newBookElement = document.createElement("div");
   newBookElement.classList.add("book");
@@ -130,4 +137,4 @@ function addBookElement(book) {
 newBookForm.onsubmit = createBook;
 addBookButton.addEventListener("click", toggleForm);
 
-export { addDummyBooks, loadBookUI };
+export { addDummyBooks, loadBookUI, addBookToLibrary, getAllBooks };

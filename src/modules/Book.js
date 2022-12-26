@@ -5,6 +5,7 @@ function Book(bookName, bookAuthor, hasRead) {
   this.bookAuthor = bookAuthor;
   this.hasRead = hasRead;
   newId += 1;
+  this.cloudID = null;
 }
 
 export default Book;
