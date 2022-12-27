@@ -1,5 +1,5 @@
 import Book from "./Book";
-
+import PubSub from "pubsub-js";
 let myLibrary = new Map();
 let bookContainer = document.querySelector(".list-books-container");
 let addBookButton = document.querySelector(".button-add-book");
@@ -10,6 +10,7 @@ let submitNewBookButton = document.querySelector("#submit-new-book-button");
 let bookName = document.querySelector("#new-book-name");
 let bookAuthor = document.querySelector("#new-book-author");
 let bookReadStatus = document.querySelector("#new-book-read-status");
+
 function toggleForm() {
   if (isFormOpen) {
     //close it
@@ -45,10 +46,16 @@ function addDummyBooks() {
   myLibrary.set(book5.bookId, book5);
 }
 
-function loadBookUI() {
-  for (let [key, value] of myLibrary) {
-    addBookElement(value);
+function deleteAllBooks() {
+  var e = document.querySelector(".list-books-container");
+  //e.firstElementChild can be used.
+  var child = e.lastElementChild;
+  while (child) {
+    console.log("deleting current books");
+    e.removeChild(child);
+    child = e.lastElementChild;
   }
+  myLibrary = new Map();
 }
 
 function createBook(e) {
@@ -85,7 +92,7 @@ function addBookElement(book) {
   newBookElement.classList.add("book");
 
   let bookId = document.createElement("div");
-  bookId.classList.add("book-inex");
+  bookId.classList.add("book-index");
   bookId.innerText = book.bookId;
 
   let newBookName = document.createElement("div");
@@ -108,9 +115,9 @@ function addBookElement(book) {
   let removeButton = document.createElement("div");
   removeButton.classList.add("remove-button");
   removeButton.innerText = "Remove";
-
   newBookReadStatus.addEventListener("click", function () {
-    let currentBook = myLibrary.get(parseInt(bookId.innerText));
+    let currentBook = book;
+
     if (currentBook.hasRead) {
       currentBook.hasRead = false;
       newBookReadStatus.innerText = "Not Read";
@@ -119,13 +126,15 @@ function addBookElement(book) {
       currentBook.hasRead = true;
     }
     newBookReadStatus.classList.toggle("read");
-    console.log(currentBook);
   });
 
   removeButton.addEventListener("click", function () {
     console.log("DELETED!");
     newBookElement.remove();
     myLibrary.delete(parseInt(bookId.innerText));
+    if (book.cloudID) {
+      PubSub.publish("book_removed", book.cloudID);
+    }
   });
   newBookElement.appendChild(newBookName);
   newBookElement.appendChild(newBookAuthor);
@@ -137,4 +146,4 @@ function addBookElement(book) {
 newBookForm.onsubmit = createBook;
 addBookButton.addEventListener("click", toggleForm);
 
-export { addDummyBooks, loadBookUI, addBookToLibrary, getAllBooks };
+export { addDummyBooks, deleteAllBooks, addBookToLibrary, getAllBooks };
