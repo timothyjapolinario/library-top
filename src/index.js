@@ -94,11 +94,6 @@ async function uploadBook(msg, book) {
   return bookDoc.id;
 }
 
-document.querySelector("#upload-book").addEventListener("click", () => {
-  console.log("signing out");
-  signOut(getAuth());
-});
-
 async function updateHeader() {
   if (getAuth().currentUser !== null) {
     const user = getAuth().currentUser;
@@ -112,7 +107,16 @@ async function updateHeader() {
     userInfoUI.id = "user-info";
     const userName = document.createElement("div");
     userName.innerText = user.displayName;
+    const signout = document.createElement("div");
+    signout.id = "signout-button";
+    signout.innerText = "Signout";
+    signout.addEventListener("click", () => {
+      console.log("signing out");
+      signOut(getAuth());
+    });
     userInfoUI.appendChild(userName);
+    userInfoUI.appendChild(signout);
+
     document.querySelector(".header").appendChild(userInfoUI);
   } else {
     console.log(document.querySelector("#user-info"));
