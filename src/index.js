@@ -123,10 +123,8 @@ async function getUserBookIds(userEmail) {
   return q.data().books;
 }
 async function removeBook(msg, data) {
-  console.log(msg, data);
-  console.log(userEmail);
   const dbRef = doc(db, "users", userEmail);
-  //await deleteDoc(doc(db, "books", `${data}`));
+  await deleteDoc(doc(db, "books", `${data}`));
   allBookIDs = allBookIDs.filter((book) => book.cloudID !== `${data}`);
   console.log(allBookIDs);
   try {
@@ -139,6 +137,18 @@ async function removeBook(msg, data) {
     console.log("Error deleting book", error);
   }
 }
+
+async function updateReadStatus(msg, data) {
+  const dbRef = doc(db, "books", data.cloudID);
+  try {
+    await updateDoc(dbRef, {
+      hasRead: data.hasRead,
+    });
+  } catch (error) {
+    console.log("Error updating hasRead status", error);
+  }
+}
+
 async function uploadUnsavedLocalBooks(localBooks) {
   const updateBooks = [];
   for (const book of localBooks) {
@@ -157,6 +167,7 @@ async function init() {
     signin();
   });
   PubSub.subscribe("book_removed", removeBook);
+  PubSub.subscribe("book_read_updated", updateReadStatus);
   //updates current user even in cold start
   onAuthStateChanged(getAuth(), async (user) => {
     if (user) {

@@ -125,6 +125,10 @@ function addBookElement(book) {
       newBookReadStatus.innerText = "Read";
       currentBook.hasRead = true;
     }
+    PubSub.publish("book_read_updated", {
+      cloudID: book.cloudID,
+      hasRead: book.hasRead,
+    });
     newBookReadStatus.classList.toggle("read");
   });
 
