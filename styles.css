@@ -10,6 +10,10 @@ body {
 .inactive {
   display: none;
 }
+
+#signout-button {
+  font-size: 1.5rem;
+}
 .header {
   display: flex;
   justify-content: space-between;
