@@ -73,12 +73,23 @@ async function saveUserToCloud(userEmail, books) {
 
 async function uploadBook(msg, book) {
   const dbRef = collection(db, "books");
+  const dbRefUser = doc(db, "users", userEmail);
   const bookDoc = doc(dbRef);
   try {
     await setDoc(bookDoc, { ...book, cloudID: bookDoc.id });
-    return bookDoc.id;
   } catch (error) {
     console.log("Error adding book to FireStore", error);
+  }
+
+  allBookIDs.push({ cloudID: bookDoc.id });
+  try {
+    await updateDoc(dbRefUser, {
+      books: allBookIDs,
+    }).then(() => {
+      console.log("Adding book to user library success");
+    });
+  } catch (error) {
+    console.log("Error adding book to user library", error);
   }
   return bookDoc.id;
 }
