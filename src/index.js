@@ -71,7 +71,7 @@ async function saveUserToCloud(userEmail, books) {
   }
 }
 
-async function uploadBook(book) {
+async function uploadBook(msg, book) {
   const dbRef = collection(db, "books");
   const bookDoc = doc(dbRef);
   try {
@@ -168,6 +168,7 @@ async function init() {
   });
   PubSub.subscribe("book_removed", removeBook);
   PubSub.subscribe("book_read_updated", updateReadStatus);
+  PubSub.subscribe("new_book_created", uploadBook);
   //updates current user even in cold start
   onAuthStateChanged(getAuth(), async (user) => {
     if (user) {

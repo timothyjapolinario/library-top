@@ -69,6 +69,7 @@ function createBook(e) {
 
   //close book
   toggleForm();
+  PubSub.publish("new_book_created", newBook);
   addBookToLibrary(newBook);
 }
 
